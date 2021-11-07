@@ -7,22 +7,28 @@ import TextField from '@mui/material/TextField';
 
 const LABELS = [
     {
-        label: 'Name'
+        label: 'Name',
+        width: 'true'
     },
     {
-        label: 'Email'
+        label: 'Email',
+        width: 'true'
     },
     {
-        label: 'Phone Number'
+        label: 'Phone Number',
+        width: 'true'
     },
     {
-        label: 'Location'
+        label: 'Location',
+        width: 'false'
     },
     {
-        label: 'Price per hour'
+        label: 'Price per hour',
+        width: 'false'
     },
     {
-        label: 'Years or experience'
+        label: 'Years or experience',
+        width: 'false'
     }
 ]
 
@@ -53,17 +59,24 @@ export default function CreateDeveloper() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    <Typography id="modal-modal-title" variant="h6" component="h2" align='center'>
                         Fill the developer info
                     </Typography>
-                    {LABELS.map(({ label }) => (
+                    {LABELS.map(({ label, width }) => (
                         <TextField
                             key={`${label}-label`}
                             label={label}
                             variant='outlined'
+                            margin='normal'
+                            fullWidth={width}
                         >
                         </TextField>
                     ))}
+                    <Button
+                        color='primary'
+                        size='large'
+                        variant='contained'
+                    >Create Developer</Button>
                 </Box>
             </Modal>
         </div>
