@@ -4,6 +4,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
 const LABELS = [
     {
@@ -48,6 +52,12 @@ export default function CreateDeveloper() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
+
 
     return (
         <div>
@@ -64,6 +74,7 @@ export default function CreateDeveloper() {
                     </Typography>
                     {LABELS.map(({ label, width }) => (
                         <TextField
+                            size="small"
                             key={`${label}-label`}
                             label={label}
                             variant='outlined'
@@ -72,13 +83,56 @@ export default function CreateDeveloper() {
                         >
                         </TextField>
                     ))}
+                    <FormControl
+                        margin="dense"
+                        fullWidth="true"
+                    >
+                        <InputLabel
+                            margin="dense"
+                            id="demo-simple-select-label">Language</InputLabel>
+                        <Select
+                            size="small"
+                            autoWidth="true"
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={age}
+                            label="Native language"
+                            onChange={handleChange}
+                        >
+                            <MenuItem value={10}>Bulgarian</MenuItem>
+                            <MenuItem value={20}>Serbian</MenuItem>
+                            <MenuItem value={30}>English</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <FormControl
+                        margin="dense"
+                        fullWidth="true"
+                    >
+                        <InputLabel
+                            margin="dense"
+                            id="demo-simple-select-label">Techology</InputLabel>
+                        <Select
+                            size="small"
+                            autoWidth="true"
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={age}
+                            label="Native language"
+                            onChange={handleChange}
+                        >
+                            <MenuItem value={10}>JavaScript</MenuItem>
+                            <MenuItem value={20}>Java</MenuItem>
+                            <MenuItem value={30}>Flutter</MenuItem>
+                        </Select>
+                    </FormControl>
                     <Button
+                        fullWidth="true"
                         color='primary'
                         size='large'
                         variant='contained'
                     >Create Developer</Button>
                 </Box>
             </Modal>
-        </div>
+        </div >
     );
 }
