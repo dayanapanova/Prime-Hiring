@@ -3,6 +3,7 @@ import {
     AppBar, Button, Toolbar, Box, Stack
 } from '@mui/material';
 import CreateDeveloper from './CreateDeveloper';
+import ListOfDevelopers from './ListOfDevelopers';
 
 const Header = () => {
     return (
@@ -22,7 +23,9 @@ const Header = () => {
                         </Button>
                         <Button
                             color='inherit'
-                        >View list of developers</Button>
+                        >View list of developers
+                            <ListOfDevelopers />
+                        </Button>
                     </Stack>
                 </Box>
             </Toolbar>
