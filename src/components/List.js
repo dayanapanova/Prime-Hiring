@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import Button from '@mui/material/Button';
 
 function generate(element) {
     return [0, 1, 2].map((value) =>
@@ -37,9 +37,14 @@ export default function InteractiveList() {
                             {generate(
                                 <ListItem
                                     secondaryAction={
-                                        <IconButton edge="end" aria-label="delete">
-                                            <DeleteIcon />
-                                        </IconButton>
+                                        <>
+                                            <Button
+                                                variant="contained"
+                                            >Edit</Button>
+                                            <IconButton edge="end" aria-label="delete">
+                                                <DeleteIcon />
+                                            </IconButton>
+                                        </>
                                     }
                                 >
                                     <ListItemAvatar>
