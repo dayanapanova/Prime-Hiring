@@ -1,33 +1,38 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
-    AppBar, Button, Toolbar, Box, Stack
+    AppBar,
+    Button,
+    Toolbar,
+    Typography,
+    Stack,
+    Container,
 } from '@mui/material';
-import CreateDeveloper from './CreateDeveloper';
-import ListOfDevelopers from './ListOfDevelopers';
+import { setFormIsOpen } from '../store/DevelopersSlice';
 
 const Header = () => {
+    const dispatch = useDispatch();
+
     return (
         <AppBar>
             <Toolbar>
-                <Box display='flex' justifyContent='space-between' width='100%'>
+                <Container>
                     <Stack
-                        spacing={4}
                         direction='row'
+                        width='100%'
                         alignItems='center'
-                        style={{ cursor: 'pointer' }}
+                        justifyContent='space-between'
                     >
-                        <Button
-                            color='inherit'
-                        >Create developer
-                            <CreateDeveloper />
-                        </Button>
-                        <Button
-                            color='inherit'
-                        >View list of developers
-                            <ListOfDevelopers />
-                        </Button>
+                        <Typography variant="h6">
+                            Prime Hiring
+                        </Typography>
+                        <div>
+                            <Button onClick={() => dispatch(setFormIsOpen(true))} variant='outlined' color='inherit'>
+                                Create developer
+                            </Button>
+                        </div>
                     </Stack>
-                </Box>
+                </Container>
             </Toolbar>
         </AppBar>
     )
