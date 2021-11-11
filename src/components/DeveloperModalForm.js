@@ -168,9 +168,20 @@ const DeveloperModalForm = () => {
                 </Typography>
                 <form onSubmit={handleSubmit((data) => {
                     if (formIsEdit) {
-                        dispatch(editDeveloper({ uuid: editDeveloperData?.uuid, data }))
+                        dispatch(editDeveloper({
+                            uuid: editDeveloperData?.uuid,
+                            data: {
+                                ...data,
+                                isHired: editDeveloperData?.isHired,
+                                hiredOn: editDeveloperData?.hiredOn,
+                            },
+                        }))
                     } else {
-                        dispatch(createDeveloper(data))
+                        dispatch(createDeveloper({
+                            ...data,
+                            isHired: false,
+                            hiredOn: '',
+                        }))
                     }
                 })}>
                     <Grid container spacing={3}>

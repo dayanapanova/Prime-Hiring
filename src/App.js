@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/material';
 import Header from './components/Header';
-import List from './components/List';
+import DevelopersList from './components/DevelopersList';
 import DeveloperModalForm from './components/DeveloperModalForm';
 import { store } from './store';
 import { localStorageKeys } from './constants/index';
@@ -12,15 +12,11 @@ store.subscribe(() => {
 })
 
 function App() {
-  const [formIsOpen, setFormIsOpen] = useState(false);
   return (
     <Box mt={12}>
-      <Header {...{ setFormIsOpen }} />
-      <List />
-      <DeveloperModalForm
-        isOpen={formIsOpen}
-        onClose={() => setFormIsOpen(false)}
-      />
+      <Header />
+      <DevelopersList />
+      <DeveloperModalForm />
     </Box>
   );
 }
