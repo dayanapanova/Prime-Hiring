@@ -22,81 +22,6 @@ import {
     setFormIsEdit,
 } from '../store/DevelopersSlice';
 
-const FIELDS = [
-    {
-        component: TextField,
-        label: 'Name',
-        name: 'name',
-    },
-    {
-        component: TextField,
-        label: 'Email',
-        name: 'email',
-    },
-    {
-        component: TextField,
-        label: 'Phone Number',
-        name: 'phoneNumber'
-    },
-    {
-        component: TextField,
-        label: 'Location',
-        name: 'location',
-    },
-    {
-        component: TextField,
-        label: 'Price per hour',
-        name: 'pricePerHour',
-    },
-    {
-        component: TextField,
-        label: 'Years or experience',
-        name: 'yearsOfExperience',
-    },
-    {
-        component: Select,
-        label: 'Language',
-        name: 'language',
-        componentProps: {
-            options: [
-                {
-                    label: 'Bulgarian',
-                    value: 'Bulgarian',
-                },
-                {
-                    label: 'Serbian',
-                    value: 'Serbian',
-                },
-                {
-                    label: 'English',
-                    value: 'English',
-                }
-            ],
-        }
-    },
-    {
-        component: Select,
-        label: 'Technology',
-        name: 'technology',
-        componentProps: {
-            options: [
-                {
-                    label: 'JavaScript',
-                    value: 'JavaScript',
-                },
-                {
-                    label: 'Java',
-                    value: 'Java',
-                },
-                {
-                    label: 'Flutter',
-                    value: 'Flutter',
-                }
-            ],
-        }
-    }
-];
-
 const DeveloperModalForm = () => {
     const dispatch = useDispatch();
 
@@ -157,6 +82,83 @@ const DeveloperModalForm = () => {
             reset(editDeveloperData);
         }
     }, [editDeveloperData, formIsEdit]);
+
+    const FIELDS = [
+        {
+            component: TextField,
+            label: 'Name',
+            name: 'name',
+        },
+        {
+            component: TextField,
+            label: 'Email',
+            name: 'email',
+        },
+        {
+            component: TextField,
+            label: 'Phone Number',
+            name: 'phoneNumber'
+        },
+        {
+            component: TextField,
+            label: 'Location',
+            name: 'location',
+        },
+        {
+            component: TextField,
+            label: 'Price per hour',
+            name: 'pricePerHour',
+        },
+        {
+            component: TextField,
+            label: 'Years or experience',
+            name: 'yearsOfExperience',
+        },
+        {
+            component: Select,
+            label: 'Language',
+            name: 'language',
+            componentProps: {
+                defaultValue: editDeveloperData?.language,
+                options: [
+                    {
+                        label: 'Bulgarian',
+                        value: 'Bulgarian',
+                    },
+                    {
+                        label: 'Serbian',
+                        value: 'Serbian',
+                    },
+                    {
+                        label: 'English',
+                        value: 'English',
+                    }
+                ],
+            }
+        },
+        {
+            component: Select,
+            label: 'Technology',
+            name: 'technology',
+            componentProps: {
+                defaultValue: editDeveloperData?.technology,
+                options: [
+                    {
+                        label: 'JavaScript',
+                        value: 'JavaScript',
+                    },
+                    {
+                        label: 'Java',
+                        value: 'Java',
+                    },
+                    {
+                        label: 'Flutter',
+                        value: 'Flutter',
+                    }
+                ],
+            }
+        }
+    ];
 
     return (
         <Dialog open={formIsOpen} {...{ onClose }}>
