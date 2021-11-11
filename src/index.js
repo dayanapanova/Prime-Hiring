@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './store'
+import { store } from './store';
 
 ReactDOM.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
-      <App />
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <App />
+      </LocalizationProvider>
     </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root')
