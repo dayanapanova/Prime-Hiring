@@ -144,7 +144,19 @@ const DeveloperModalForm = () => {
     } = useForm({ resolver: yupResolver(validations) });
 
 
+    useEffect(() => {
+        if (!formIsOpen) {
+            dispatch(setFormIsEdit(false));
+            reset({});
+            dispatch(setEditDeveloperData({}));
+        }
+    }, [formIsOpen]);
 
+    useEffect(() => {
+        if (formIsEdit) {
+            reset(editDeveloperData);
+        }
+    }, [editDeveloperData, formIsEdit]);
 
     return (
         <Dialog open={formIsOpen} {...{ onClose }}>
